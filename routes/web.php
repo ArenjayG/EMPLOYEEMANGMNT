@@ -18,8 +18,10 @@ Route::middleware('auth')->group(function () {
     Route::get('profile', [\App\Http\Controllers\ProfileController::class, 'show'])->name('profile.show');
     Route::put('profile', [\App\Http\Controllers\ProfileController::class, 'update'])->name('profile.update');
     Route::get('new', [\App\Http\Controllers\EmployeeController::class, 'index1'])->name('new.index1');
-#employee management page
+
     Route::get('pages', [\App\Http\Controllers\EmployeeController::class, 'index'])->name('pages.index');
     Route::resource("employee", EmployeeController::class);
+
+    // Route::get('/new/index1', [EmployeeController::class, 'index1'])->name('new.index1');
 
 });

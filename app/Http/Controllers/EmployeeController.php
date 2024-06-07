@@ -6,16 +6,18 @@ class EmployeeController extends Controller
 {
     protected $employee;
     
-    public function __construct(){
-        $this->employee = new employee();
-        
-    }
+   
     
     public function index()
     {
         $response['employees'] = $this->employee->all();
         return view('pages.index')->with($response);
     }    
+
+    public function __construct(){
+        $this->employee = new employee();
+        
+    }
     
     public function store(Request $request)
     {
@@ -24,17 +26,23 @@ class EmployeeController extends Controller
         return redirect()->back();
     }
   
-    // In your UserController or EmployeeController
+    
 public function edit($id)
 {
     $employee = Employee::find($id);
 
     if (!$employee) {
-        // Handle the case where the employee is not found
+        
         abort(404);
     }
 
     return view('pages.edit', compact('employee'));
+}
+
+public function index1()
+{
+    $response['employees'] = $this->employee->all();
+    return view('new.index1')->with($response);
 }
 
     public function update(Request $request, string $id)
@@ -50,10 +58,5 @@ public function edit($id)
         return redirect('employee');
     }
 
-    public function index1()
-    {
-        $response['employees'] = $this->employee->all();
-        return view('new.index1')->with($response);
-    }
    
 }
